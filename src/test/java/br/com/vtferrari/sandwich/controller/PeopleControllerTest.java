@@ -59,8 +59,8 @@ public class PeopleControllerTest {
         final PeopleResource a1 = peopleController.getByGroup("A1").block();
 
         assertEquals(1, a1.getContent().size());
-        verify(findPersonPerCategoryGroupUseCase,atLeastOnce()).execute(anyString());
-        verify(listOfPersonToPeopleResourceConverter,atLeastOnce()).convert(anyList());
+        verify(findPersonPerCategoryGroupUseCase, atLeastOnce()).execute(anyString());
+        verify(listOfPersonToPeopleResourceConverter, atLeastOnce()).convert(anyList());
     }
 
 
@@ -80,9 +80,9 @@ public class PeopleControllerTest {
 
         peopleController.save(build).block();
 
-        verify(personResourceToPersonConverter,atLeastOnce()).convert(any(PersonResource.class));
-        verify(savePersonUseCase,atLeastOnce()).execute(any(Person.class));
-        verify(sendToQueueUseCase,atLeastOnce()).execute(any(Person.class));
+        verify(personResourceToPersonConverter, atLeastOnce()).convert(any(PersonResource.class));
+        verify(savePersonUseCase, atLeastOnce()).execute(any(Person.class));
+        verify(sendToQueueUseCase, atLeastOnce()).execute(any(Person.class));
     }
 
 }

@@ -12,7 +12,7 @@ public class SavePersonUseCase {
 
     private final PersonRepository personRepository;
 
-    public Mono<Person> execute(Person person){
+    public Mono<Person> execute(Person person) {
         return personRepository.save(person);
     }
 }

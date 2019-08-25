@@ -23,11 +23,11 @@ public class CategoryToDemographicConverterTest {
         final var build = Category
                 .builder()
                 .group("A1")
-                .interest(List.of("test1","test2"))
+                .interest(List.of("test1", "test2"))
                 .build();
 
         final Demographic convert = categoryToDemographicConverter.convert(build);
-        assertEquals("A1",convert.getGroup());
-        assertEquals(2,convert.getInterest().size());
+        assertEquals("A1", convert.getGroup());
+        assertEquals(2, convert.getInterest().size());
     }
 }

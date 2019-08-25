@@ -1,6 +1,7 @@
 package br.com.vtferrari.sandwich.handler;
 
 import br.com.vtferrari.sandwich.handler.converer.CategoryToDemographicConverter;
+import br.com.vtferrari.sandwich.handler.exception.CannotConvertMessageToObjectException;
 import br.com.vtferrari.sandwich.usecase.InsertOrIncrementDemographicGroupUseCase;
 import br.com.vtferrari.sandwich.usecase.domain.Category;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -31,7 +32,7 @@ public class MapReduceKafkaListener {
         try {
             return objectMapper.readValue(message, Category.class);
         } catch (IOException e) {
-            throw new RuntimeException("Could not convert message", e);
+            throw new CannotConvertMessageToObjectException("Could not convert message", e);
         }
     }
 }

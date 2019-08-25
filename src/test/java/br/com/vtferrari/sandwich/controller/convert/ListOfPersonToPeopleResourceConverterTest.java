@@ -1,8 +1,6 @@
 package br.com.vtferrari.sandwich.controller.convert;
 
-import br.com.vtferrari.sandwich.handler.converer.CategoryToDemographicConverter;
 import br.com.vtferrari.sandwich.usecase.domain.Category;
-import br.com.vtferrari.sandwich.usecase.domain.Demographic;
 import br.com.vtferrari.sandwich.usecase.domain.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +9,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ListOfPersonToPeopleResourceConverterTest {
@@ -32,7 +30,7 @@ public class ListOfPersonToPeopleResourceConverterTest {
                 .build();
 
         final var convert = listOfPersonToPeopleResourceConverter.convert(List.of(build));
-        assertEquals("A1",convert.getContent().get(0).getCategory().getId());
-        assertEquals(2,convert.getContent().get(0).getCategory().getInterest().size());
+        assertEquals("A1", convert.getContent().get(0).getCategory().getId());
+        assertEquals(2, convert.getContent().get(0).getCategory().getInterest().size());
     }
 }

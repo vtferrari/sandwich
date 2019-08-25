@@ -12,7 +12,6 @@ import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.kafka.core.KafkaTemplate;
 
-import java.io.IOException;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.anyString;
@@ -43,7 +42,8 @@ public class SendToQueueUseCaseTest {
     @Test(expected = RuntimeException.class)
     public void testShouldNotSentToQueue() throws Exception {
 
-        when(objectMapper.writeValueAsString(any(Category.class))).thenThrow(new JsonProcessingException("") {});
+        when(objectMapper.writeValueAsString(any(Category.class))).thenThrow(new JsonProcessingException("") {
+        });
 
         sendToQueueUseCase.execute(Person.builder().category(Category.builder().group("A1").interest(List.of("test")).build()).build());
     }

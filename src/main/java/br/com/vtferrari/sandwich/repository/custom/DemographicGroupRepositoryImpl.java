@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
-import static java.util.Objects.isNull;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 
 @Component

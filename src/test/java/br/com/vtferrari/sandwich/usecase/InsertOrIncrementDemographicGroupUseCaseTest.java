@@ -1,9 +1,7 @@
 package br.com.vtferrari.sandwich.usecase;
 
 import br.com.vtferrari.sandwich.repository.DemographicGroupRepository;
-import br.com.vtferrari.sandwich.repository.PersonRepository;
 import br.com.vtferrari.sandwich.usecase.domain.Demographic;
-import br.com.vtferrari.sandwich.usecase.domain.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -11,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import reactor.core.publisher.Mono;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 

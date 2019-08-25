@@ -27,7 +27,7 @@ public class DemographicGroupRepositoryImplTest {
 
     @Test
     public void testShouldIncrement() {
-        demographicGroupRepository.increment(Demographic.builder().interest(Map.of("test",1L)).build());
+        demographicGroupRepository.increment(Demographic.builder().interest(Map.of("test", 1L)).build());
 
         verify(mongoTemplate, atLeastOnce()).updateMulti(any(Query.class), any(Update.class), eq(Demographic.class));
     }

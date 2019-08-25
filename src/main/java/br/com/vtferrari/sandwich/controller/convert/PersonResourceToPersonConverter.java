@@ -1,6 +1,5 @@
 package br.com.vtferrari.sandwich.controller.convert;
 
-import br.com.vtferrari.sandwich.controller.resource.CategoryResource;
 import br.com.vtferrari.sandwich.controller.resource.PersonResource;
 import br.com.vtferrari.sandwich.usecase.domain.Category;
 import br.com.vtferrari.sandwich.usecase.domain.Person;
@@ -27,7 +26,7 @@ public class PersonResourceToPersonConverter {
                 .build();
     }
 
-    private String encode(String encode){
+    private String encode(String encode) {
         return new String(Base64.getEncoder().encode(encode.getBytes()));
     }
 }

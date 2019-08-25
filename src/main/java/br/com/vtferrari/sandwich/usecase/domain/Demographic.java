@@ -17,5 +17,5 @@ import java.util.Map;
 public class Demographic {
     @Id
     private String group;
-    private Map<String,Long> interest;
+    private Map<String, Long> interest;
 }

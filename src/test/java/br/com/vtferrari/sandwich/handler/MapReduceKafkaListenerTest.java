@@ -11,13 +11,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
-
-import java.io.IOException;
 
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -38,7 +33,7 @@ public class MapReduceKafkaListenerTest {
 
         mapReduceKafkaListener.listener("{\"group\":\"A1\",\"interest\":[\"test1\",\"test2\"]}");
 
-        verify(objectMapper).readValue(anyString(),eq(Category.class));
+        verify(objectMapper).readValue(anyString(), eq(Category.class));
         verify(categoryToDemographicConverter).convert(any(Category.class));
         verify(insertOrIncrementDemographicGroupUseCase).execute(any(Demographic.class));
     }
@@ -48,7 +43,7 @@ public class MapReduceKafkaListenerTest {
 
         mapReduceKafkaListener.listener("{\"group\":\"A1\",\"interest\":\"[\"test\"]\"}");
 
-        verify(objectMapper).readValue(anyString(),eq(Category.class));
+        verify(objectMapper).readValue(anyString(), eq(Category.class));
         verify(categoryToDemographicConverter).convert(any(Category.class));
         verify(insertOrIncrementDemographicGroupUseCase).execute(any(Demographic.class));
     }

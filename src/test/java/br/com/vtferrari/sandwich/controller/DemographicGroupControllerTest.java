@@ -1,8 +1,6 @@
 package br.com.vtferrari.sandwich.controller;
 
 import br.com.vtferrari.sandwich.controller.convert.ListOfDemographicToDemographicsResourceConverter;
-import br.com.vtferrari.sandwich.controller.resource.DemographicResource;
-import br.com.vtferrari.sandwich.controller.resource.DemographicsResource;
 import br.com.vtferrari.sandwich.usecase.FindAllDemographicGroupUseCase;
 import br.com.vtferrari.sandwich.usecase.domain.Demographic;
 import org.junit.Test;
@@ -13,7 +11,6 @@ import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 import reactor.core.publisher.Flux;
 
-import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -35,7 +32,7 @@ public class DemographicGroupControllerTest {
         final var build = Demographic
                 .builder()
                 .group("A1")
-                .interest(Map.of("test",221L))
+                .interest(Map.of("test", 221L))
                 .build();
         when(findAllDemographicGroupUseCase.execute()).thenReturn(Flux.just(build));
 

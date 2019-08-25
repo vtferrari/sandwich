@@ -2,9 +2,6 @@ package br.com.vtferrari.sandwich.controller.convert;
 
 import br.com.vtferrari.sandwich.controller.resource.CategoryResource;
 import br.com.vtferrari.sandwich.controller.resource.PersonResource;
-import br.com.vtferrari.sandwich.handler.converer.CategoryToDemographicConverter;
-import br.com.vtferrari.sandwich.usecase.domain.Category;
-import br.com.vtferrari.sandwich.usecase.domain.Demographic;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -12,7 +9,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PersonResourceToPersonConverterTest {
@@ -35,8 +32,8 @@ public class PersonResourceToPersonConverterTest {
                 .description("test")
                 .build();
         final var convert = personResourceToPersonConverter.convert(build);
-        assertEquals("P1",convert.getId());
-        assertEquals("A1",convert.getCategory().getGroup());
-        assertEquals("dGVzdA==",convert.getContent());
+        assertEquals("P1", convert.getId());
+        assertEquals("A1", convert.getCategory().getGroup());
+        assertEquals("dGVzdA==", convert.getContent());
     }
 }
