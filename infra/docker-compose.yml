@@ -25,3 +25,7 @@ services:
     image: mongo
     ports:
       - 27017:27017
+  sonar:
+    image: sonarqube
+    ports:
+      - 9000:9000

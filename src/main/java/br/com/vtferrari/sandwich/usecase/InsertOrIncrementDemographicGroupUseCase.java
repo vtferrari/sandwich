@@ -5,17 +5,15 @@ import br.com.vtferrari.sandwich.usecase.domain.Demographic;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import static java.util.Objects.isNull;
-
 @Service
 @RequiredArgsConstructor
 public class InsertOrIncrementDemographicGroupUseCase {
     private final DemographicGroupRepository demographicGroupRepository;
 
     public void execute(Demographic demographic) {
-        if (isNull(demographicGroupRepository.findById(demographic.getGroup()))) {
-            demographicGroupRepository.save(demographic);
-        }
-        demographicGroupRepository.increment(demographic);
+        demographicGroupRepository.findById(demographic.getGroup())
+                .switchIfEmpty(demographicGroupRepository.save(demographic))
+                .doOnNext(d -> demographicGroupRepository.increment(demographic))
+                .block();
     }
 }

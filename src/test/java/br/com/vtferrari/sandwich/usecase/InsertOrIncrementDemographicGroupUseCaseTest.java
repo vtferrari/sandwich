@@ -25,22 +25,28 @@ public class InsertOrIncrementDemographicGroupUseCaseTest {
 
     @Test
     public void testShouldInsertNewDemographicGroupUseCase() {
+        when(demographicGroupRepository.findById(anyString())).thenReturn(Mono.empty());
         when(demographicGroupRepository.save(any(Demographic.class))).thenReturn(Mono.just(Demographic.builder().group("A1").build()));
+        doNothing().when(demographicGroupRepository).increment(any(Demographic.class));
+
+        insertOrIncrementDemographicGroupUseCase.execute(Demographic.builder().group("A1").build());
+
+        insertOrIncrementDemographicGroupUseCase.execute(Demographic.builder().group("A1").build());
+        verify(demographicGroupRepository, atLeastOnce()).findById(anyString());
+        verify(demographicGroupRepository, atLeastOnce()).save(any(Demographic.class));
+        verify(demographicGroupRepository, atLeastOnce()).increment(any(Demographic.class));
+    }
+
+    @Test
+    public void testShouldIncrementDemographicGroupUseCase() {
+        when(demographicGroupRepository.findById(anyString())).thenReturn(Mono.just(Demographic.builder().group("A1").build()));
+        when(demographicGroupRepository.save(any(Demographic.class))).thenReturn(Mono.just(Demographic.builder().group("A1").build()));
+        doNothing().when(demographicGroupRepository).increment(any(Demographic.class));
 
         insertOrIncrementDemographicGroupUseCase.execute(Demographic.builder().group("A1").build());
 
         verify(demographicGroupRepository, atLeastOnce()).findById(anyString());
         verify(demographicGroupRepository, atLeastOnce()).save(any(Demographic.class));
-        verify(demographicGroupRepository, atLeastOnce()).increment(any(Demographic.class));
-    }
-    @Test
-    public void testShouldIncrementDemographicGroupUseCase() {
-        when(demographicGroupRepository.findById(anyString())).thenReturn(Mono.just(Demographic.builder().group("A1").build()));
-
-        insertOrIncrementDemographicGroupUseCase.execute(Demographic.builder().group("A1").build());
-
-        verify(demographicGroupRepository, atLeastOnce()).findById(anyString());
-        verify(demographicGroupRepository, never()).save(any(Demographic.class));
         verify(demographicGroupRepository, atLeastOnce()).increment(any(Demographic.class));
     }
 }

@@ -16,6 +16,11 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<sonar.exclusions>
+			q**/resource/*.*,
+			**/domain/*.*,
+			**/**/SandwichApplication.*
+		</sonar.exclusions>
 	</properties>
 
 	<dependencies>
