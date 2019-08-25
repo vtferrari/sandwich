@@ -26,6 +26,7 @@ Now you can run the project,
 $ mvn spring-boot:run
 ````
 it will run on port 8080 (http://localhost:8080), and you can execute the commands below to see the results 
+
 -----
 ### POST /v1/people 
 Create a new person on database
