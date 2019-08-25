@@ -12,6 +12,8 @@ services:
     image: confluentinc/cp-kafka:latest
     depends_on:
       - zookeeper
+      - mongo
+      - sonarqube
     ports:
       - 9092:9092
     environment:
