@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 @Service
 @RequiredArgsConstructor
 public class SendToQueueUseCase {
@@ -18,7 +20,7 @@ public class SendToQueueUseCase {
         try {
             final var data = objectMapper.writeValueAsString(person.getCategory());
             kafkaTemplate.send("count.interest.person", data);
-        } catch (JsonProcessingException e) {
+        } catch (Exception e) {
             throw new RuntimeException("Error to convert message", e);
         }
     }

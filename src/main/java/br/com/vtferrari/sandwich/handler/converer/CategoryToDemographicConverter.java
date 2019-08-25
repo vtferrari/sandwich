@@ -1,4 +1,4 @@
-package br.com.vtferrari.sandwich.handler;
+package br.com.vtferrari.sandwich.handler.converer;
 
 import br.com.vtferrari.sandwich.usecase.domain.Category;
 import br.com.vtferrari.sandwich.usecase.domain.Demographic;

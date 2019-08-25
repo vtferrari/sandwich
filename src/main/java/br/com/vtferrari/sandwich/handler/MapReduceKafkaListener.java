@@ -1,8 +1,8 @@
 package br.com.vtferrari.sandwich.handler;
 
+import br.com.vtferrari.sandwich.handler.converer.CategoryToDemographicConverter;
 import br.com.vtferrari.sandwich.usecase.InsertOrIncrementDemographicGroupUseCase;
 import br.com.vtferrari.sandwich.usecase.domain.Category;
-import br.com.vtferrari.sandwich.usecase.domain.Demographic;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;

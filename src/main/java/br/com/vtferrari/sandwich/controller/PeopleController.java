@@ -17,10 +17,10 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/v1/people")
 public class PeopleController {
 
-    private final FindPersonPerCategoryGroupUseCase findPersonPerCategoryGroupUseCase;
-    private final SavePersonUseCase savePersonUseCase;
     private final ListOfPersonToPeopleResourceConverter listOfPersonToPeopleResourceConverter;
     private final PersonResourceToPersonConverter personResourceToPersonConverter;
+    private final FindPersonPerCategoryGroupUseCase findPersonPerCategoryGroupUseCase;
+    private final SavePersonUseCase savePersonUseCase;
     private final SendToQueueUseCase sendToQueueUseCase;
 
     @GetMapping
@@ -39,6 +39,4 @@ public class PeopleController {
                 .doOnNext(sendToQueueUseCase::execute)
                 .then();
     }
-
-
 }
