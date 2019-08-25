@@ -15,7 +15,7 @@ First of all, is extremely important to have the docker and docker compose insta
 ````bash
 $ docker-compose -f ./infra/docker-compose.yml up -d
 ````
-wait for te port 9000, and then run the build command
+wait for te port 9000 (http://localhost:9000), and then run the build command
 ````bash
 $ mvn clean install sonar:sonar
 ````
@@ -25,7 +25,7 @@ Now you can run the project,
 ````bash
 $ mvn spring-boot:run
 ````
-it will run on port 8080, and you can execute the commands below to see the results 
+it will run on port 8080 (http://localhost:8080), and you can execute the commands below to see the results 
 -----
 ### POST /v1/people 
 Create a new person on database
@@ -41,7 +41,7 @@ $ curl -X POST http://localhost:8080/v1/people \
   }'
 ````
 
-### GET /v1/people?group=<some group>
+### GET /v1/people?group=`<some group>`
 Find all people from the some group
 ````bash
 $ curl -X GET 'http://localhost:8080/v1/people?group=A1' \
